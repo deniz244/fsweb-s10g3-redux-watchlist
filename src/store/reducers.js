@@ -24,7 +24,10 @@ export default function reducer(state = initialState, action) {
 
     case PREV:
       if (state.order === 0) {
-        return state;
+        return {
+          ...state,
+          order: state.movies.length - 1,
+        };
       } else {
         return {
           ...state,
@@ -38,6 +41,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         favMovies: [...state.favMovies, currentMovie],
         movies: state.movies.filter((movie) => movie.id !== currentMovie.id),
+        order: state.order - 1,
       };
 
     case REM_FAV:
