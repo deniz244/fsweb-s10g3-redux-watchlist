@@ -1,18 +1,24 @@
-import { useState } from "react";
+//import { useState } from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 import Movie from "./components/Movie";
 import FavMovie from "./components/FavMovie";
 
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector, useDispatch } from "react-redux";
+
+import { NEXT } from "./store/actions";
 
 function App() {
-  const order = useSelector((state) => state.order);
+  //const [sira, setSira] = useState(0);
+  //const favMovies = [];
 
-  const [sira, setSira] = useState(0);
-  const favMovies = [];
+  //const order = useSelector((state) => state.order);
+  const { order, favMovies } = useSelector((state) => state);
+
+  const dispatch = useDispatch();
 
   function sonrakiFilm() {
-    setSira(sira + 1);
+    //setSira(sira + 1);
+    dispatch({ type: NEXT });
   }
 
   return (

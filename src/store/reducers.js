@@ -10,7 +10,12 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    //case:
+    case NEXT:
+      return {
+        ...state,
+        order: state.order + 1,
+      };
+
     default:
       return state;
   }
