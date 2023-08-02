@@ -5,7 +5,7 @@ import FavMovie from "./components/FavMovie";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { NEXT } from "./store/actions";
+import { ADD_FAV, NEXT, PREV } from "./store/actions";
 
 function App() {
   //const [sira, setSira] = useState(0);
@@ -19,6 +19,14 @@ function App() {
   function sonrakiFilm() {
     //setSira(sira + 1);
     dispatch({ type: NEXT });
+  }
+
+  function oncekiFilm() {
+    dispatch({ type: PREV });
+  }
+
+  function favoriyeEkle() {
+    dispatch({ type: ADD_FAV });
   }
 
   return (
@@ -46,12 +54,22 @@ function App() {
 
           <div className="flex gap-3 justify-end py-3">
             <button
+              onClick={oncekiFilm}
+              className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+            >
+              Önceki
+            </button>
+            <button
               onClick={sonrakiFilm}
               className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
             >
               Sıradaki
             </button>
-            <button className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white">
+
+            <button
+              onClick={favoriyeEkle}
+              className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white"
+            >
               Listeme ekle
             </button>
           </div>
